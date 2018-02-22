@@ -9,8 +9,57 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<div class="topo">
+			<ul class="">
+				<li><a href="#"><p class="logo">MyYoutube</p></a></li>
+				<li>
+					<form>
+						<input class="form_item caixa_pesquisa" type="search" name="" placeholder="Pesquisar">
+						<input class="btn_submit" type="submit" value="ir">
+					</form>
+					
+				</li>
+				<li style="float: right;"><a href="#"><p class="p_login">Fazer Login</p></a></li>
+			</ul>
+		</div>
+		<div class="container_left">
+			<div>
+				<div class="container_left_item">
+					<p>Categorias</p>
+				<ul>
+					<li>testr</li>
+					<li>testr</li>
+				</ul>
+				</div>
+				
+			</div>
+		</div>
+		<div class="container_right">
+			<?php for($i = 0; $i< 15; $i++): ?>
+			<div class="item_right">
+				<?php for($j = 0; $j< 5; $j++): ?>
+				<div class="video_item">
+					<video class="video_item_frame" src="/assets/videos/videoplayback.mp4"></video>
+					<div class="descricao">
+						<span>Autor</span> <br>
+						<span>Visualizações</span> <br>
+						<span>tempo</span>
+					</div>					
+				</div>
 
-		<?php $this->loadViewInTemplate($viewName,$viewData); ?>
+				<?php endfor; ?>
+			</div>
+		<?php endfor; ?>
 
+		</div>
+	</body>
+	</html>
+	<?php $this->loadViewInTemplate($viewName,$viewData); ?>
 </body>
 </html>
