@@ -15,16 +15,37 @@
 	background-color: green;
 }
 .secundario_right{
-	width: 300px;
-	height: 500px;
+	width: 350px;
+	
 	background-color: blue;
 	float: right;
 }
 .secundario_left{
 	position: absolute;
 	left: 20px;
-	right: 320px;
+	right: 370px;
 	height: 400px;
 	background-color: red;
 	
+}
+.video_recomendado{
+	width: 330px;
+	height: 100px;
+	background-color: gray;
+	margin: 10px;
+}
+.video_recomendado video{
+	height: 100px;
+	width: 150px;
+	background-color: black;
+}
+.video_recomendado_descricao{
+	width: 170px;
+	height: 100px;
+	background-color: white;
+	float: right;
+}
+.likes_box{
+	background-color: blue;
+	float: right;
 }

@@ -57,7 +57,7 @@ a:hover{
 }
 .container_left{
 	background-color: #ccc;
-	width: 300px;
+	width: 270px;
 	position: fixed;
 	top: 40px;
 	left: 0;
@@ -78,7 +78,7 @@ a:hover{
 }
 .container_right{
 	position: fixed;
-	left: 300px;
+	left: 270px;
 	right: 0;
 	top: 40px;
 	height: 100%;

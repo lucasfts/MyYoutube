@@ -7,7 +7,7 @@ function toggleLeft(){
 function redefinir(){
 	var visivel = $("#container_left").css("display");
 	if(visivel == "none"){
-		$("#container_right").css("left","300px");
+		$("#container_right").css("left","270px");
 	}
 	else{
 		$("#container_right").css("left","0px");
