@@ -12,8 +12,24 @@
 		<div class="likes_box">
 			like deslike
 		</div>
+		<br>
+		<hr>
 		<div class="video_descricao_box">
-			
+			<div class="autor_box">
+				<img src="" height="50px;">
+				Nome do Canal
+				<button >Inscreva-se</button>
+			</div>
+			<div class="descricao_texto">
+				
+			</div>
+		</div>
+		<div class="comentarios_box">
+			<?php for($i = 0; $i < 10; $i++): ?>
+				<div class="comentario_item">
+					adsad
+				</div>
+			<?php endfor; ?>
 		</div>
 	</div>
 	<div class="secundario_right">
@@ -25,6 +41,7 @@
 					Num Views
 					
 				</div>
+
 			</div>
 
 		<?php endfor; ?>
