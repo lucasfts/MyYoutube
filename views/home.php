@@ -7,7 +7,7 @@
 		<div class="slider_items">
 			<?php for($j = 0; $j< 5; $j++): ?>
 				<div class="video_item">
-					<a href="#"><video class="video_item_frame" src="/assets/videos/videoplayback.mp4"></video></a>
+					<a href="/watch"><video class="video_item_frame" src="/assets/videos/videoplayback.mp4"></video></a>
 					<div class="descricao">
 						<a href="/watch" class="titulo_video">Titulo asd saddasdasdasd asdasdasd</a><br>
 						<span>Autor</span> <br>

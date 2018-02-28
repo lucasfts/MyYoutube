@@ -9,11 +9,11 @@
 <body>
 		<div class="topo">	
 			<ul>
-				<li><button style="height:30px;line-height: 30px;" onclick="toggleLeft()">Toglar</button></li>	
-				<li><a href="#"><p class="logo">MyYoutube</p></a></li>
+				<li><button style="height:30px;line-height:20px;" onclick="toggleLeft()">| | | |</button></li>	
+				<li><a href="/"><p class="logo">MyYoutube</p></a></li>
 				<li>
 					<form>
-						<input class="form_item caixa_pesquisa" type="search" name="" placeholder="Pesquisar">
+						<input style="border: 1px solid #555" class="form_item caixa_pesquisa" type="search" name="" placeholder="Pesquisar">
 						<input class="btn_submit" type="submit" value="ir">
 					</form>
 					
@@ -26,8 +26,17 @@
 				<div class="container_left_item">
 					<p>Categorias</p>
 				<ul>
-					<li>testr</li>
-					<li>testr</li>
+					<?php for($i = 0; $i < 5; $i++): ?>
+					<a href=""><li>
+						<div class="categoria_item">
+
+						<img src="/teste.jpg">
+						<pre>Nome da Categoria</pre><br>
+						
+						</div>
+					</li></a>
+				<?php endfor; ?>
+					
 				</ul>
 				</div>
 				

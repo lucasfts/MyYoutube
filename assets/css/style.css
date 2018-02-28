@@ -27,13 +27,16 @@ a:hover{
 	min-width: 400px;
 	margin-left: 100px;
 	margin-right: 0;
+	padding: 0;
 	padding-left: 10px;
+	height: 30px;
+	background-color: #ddd;
 }
 .form_item{
 	height: 30px;
 	line-height: 30px;
 	border: 0;
-	border-radius: 3px;
+	
 }
 .logo{
 	color: red;
@@ -43,12 +46,14 @@ a:hover{
 .btn_submit{
 	height: 30px;
 	border: 0;
-	border-radius: 3px;
-	background-color: white;
+	background-color: #bbb;
 	line-height: 30px;
-	width: 30px;
+	width: 60px;
 	cursor: pointer;
 	margin-right: 0;
+	margin-left: -5px;
+	padding: 0;
+	border: none;
 }
 .p_login{
 	color: red;
@@ -86,6 +91,24 @@ a:hover{
 	overflow: scroll;	
 }
 
+.categoria_item{
+	width: 100%;
+	height: 30px;
+	background-color: red;
+	margin-top:5px;
+	margin-bottom: 15px;
+	font-size: 20px;
+	line-height: 30px;
+	font-weight: bolder;
+
+}
 
 
+.categoria_item img{
+	float: left;
+	height: 30px;
+	width: 30px;
+	border-radius: 15px;
+	margin-right: 10px;
+}
 

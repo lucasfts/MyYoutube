@@ -16,8 +16,9 @@
 		<hr>
 		<div class="video_descricao_box">
 			<div class="autor_box">
-				<img src="" height="50px;">
-				Nome do Canal
+				<img src="/teste.jpg">
+				<pre><b style="font-size: 18px;">Nome do Canal </b><br ><span>Publicado em 01/01/2000</span>
+				</pre>
 				<button >Inscreva-se</button>
 			</div>
 			<div class="descricao_texto">
@@ -27,14 +28,17 @@
 		<div class="comentarios_box">
 			<?php for($i = 0; $i < 10; $i++): ?>
 				<div class="comentario_item">
-					adsad
+
+				<img src="/teste.jpg">
+				<pre class="comentario_autor">Nome do Canal</pre><br>
+				<pre class="comentario_texto">fasdfasdfasdfasdfasdf</pre>
 				</div>
 			<?php endfor; ?>
 		</div>
 	</div>
 	<div class="secundario_right">
 		<?php for($i = 0; $i < 10; $i++): ?>
-			<div class="video_recomendado">
+			<a href="#" style="text-decoration: none;color: #000;"><div class="video_recomendado">
 				<video src="/assets/videos/videoplayback.mp4"></video>
 				<div class="video_recomendado_descricao">
 					Titulo d Video<br>
@@ -42,7 +46,7 @@
 					
 				</div>
 
-			</div>
+			</div></a>
 
 		<?php endfor; ?>
 	</div>
