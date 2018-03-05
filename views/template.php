@@ -18,7 +18,7 @@
 					</form>
 					
 				</li>
-				<li style="float: right;"><a href="#"><p class="p_login">Fazer Login</p></a></li>
+				<li style="float: right;"><a href="/login"><p class="p_login">Fazer Login</p></a></li>
 			</ul>
 		</div>
 		<div class="container_left" id="container_left">

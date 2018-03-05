@@ -10,22 +10,46 @@
 		<h3>Titulo do Video</h3>
 		<p style="float: left;">Num View</p>
 		<div class="likes_box">
-			like deslike
+			<button>Like</button>
+			<button>DesLike</button>
 		</div>
 		<br>
 		<hr>
+
 		<div class="video_descricao_box">
+
 			<div class="autor_box">
 				<img src="/teste.jpg">
-				<pre><b style="font-size: 18px;">Nome do Canal </b><br ><span>Publicado em 01/01/2000</span>
+				<pre><b style="font-size: 18px;"><br>Nome do Canal </b><br><br><br ><span>Publicado em 01/01/2000</span>
 				</pre>
 				<button >Inscreva-se</button>
+
 			</div>
-			<div class="descricao_texto">
-				
-			</div>
+			<div style="clear: both;"></div>
+			
+				<div class="descricao_texto">
+					<div align="left">
+						sadssads
+					</div>
+				</div>
+			
+
 		</div>
 		<div class="comentarios_box">
+			<h5>213213 Comnetarios</h5><br>
+			<div class="caixa_comentario" id="caixa_comentario">
+				
+
+				<div class="caixa_comentario_textarea" >
+					<textarea id="textarea" placeholder="Adicione um comentario"></textarea>
+				</div>
+				<div class="caixa_comentario_img">
+					<img src="/teste.jpg" " />
+				</div>
+				
+				<div style="clear: both;"></div>
+				</div>
+				
 			<?php for($i = 0; $i < 10; $i++): ?>
 				<div class="comentario_item">
 
@@ -52,3 +76,14 @@
 	</div>
 
 </div>
+
+<script type="text/javascript">
+
+	var atualizar = setInterval("redimensionarTextarea()",100);
+
+	function redimensionarTextarea(){
+		var caixa = $("#caixa_comentario");
+		var textarea = $("#textarea");
+		caixa.height(textarea.height())  ;
+	}
+</script>
