@@ -10,5 +10,6 @@ class userController extends Controller{
 		$dados = array();
 
 		$this->loadTemplate('user',$dados);
+		
 	}
 }
