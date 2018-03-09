@@ -1,0 +1,25 @@
+.resultados{
+	background-color: green;
+	width: 100%;
+	height: 400px;
+
+}
+.result_item{
+	height: 180px;
+	width: 100%;
+	border: 1px solid #000;
+}
+.result_item video{
+	height: 180px;
+	width: 300px;
+	float: left;
+	background: black;
+
+}
+.acoes{
+	float: right;
+	margin-right: 20px;
+	line-height: 30px;
+	font-size: 20px;
+	margin-top: 60px;
+}
