@@ -1,15 +1,16 @@
 <?php
-class userController extends Controller{
+class usersController extends Controller{
 
 	public function __construct(){
 		parent::__construct();
 	}
 	
 	public function index(){
-	
 		$dados = array();
 
-		$this->loadTemplate('user',$dados);
+		$this->loadTemplate('users',$dados);
 		
 	}
+
+	
 }

@@ -6,9 +6,9 @@ class homeController extends Controller{
 	}
 	
 	public function index(){
-	
 		$dados = array();
-
+		$categorias = new Categorias();
+		$dados['categorias'] = $categorias->getCategorias();
 		$this->loadTemplate('home',$dados);
 	}
 

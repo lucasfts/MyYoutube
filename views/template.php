@@ -9,7 +9,7 @@
 <body>
 		<div class="topo">	
 			<ul>
-				<li><button style="height:30px;line-height:20px;" onclick="toggleLeft()">| | | |</button></li>	
+				<li><button style="height:30px;line-height:20px;" onclick="toggleLeft()"><img id="menuimg" src="/assets/images/menu.png"></button></li>	
 				<li><a href="/"><p class="logo">MyYoutube</p></a></li>
 				<li>
 					<form>
@@ -18,7 +18,15 @@
 					</form>
 					
 				</li>
-				<li style="float: right;"><a href="/login"><p class="p_login">Fazer Login</p></a></li>
+				<?php if (!isset($_SESSION['user'])): ?>
+					<li style="float: right;"><a href="/login"><p class="p_login">Fazer Login</p></a></li>
+				<?php else: ?>
+					<li style="float: right;margin-left: 15px;"><a href="/login/logout"><p class="p_login">Sair</p></a></li>
+					<li style="float: right;">
+						<a href="#"><p class="p_login">Nome do Canal</p></a>
+					</li>
+				<?php endif ?>
+				
 			</ul>
 		</div>
 		<div class="container_left" id="container_left">
@@ -26,16 +34,16 @@
 				<div class="container_left_item">
 					<p>Categorias</p>
 				<ul>
-					<?php for($i = 0; $i < 5; $i++): ?>
-					<a href=""><li>
+					<?php foreach($categorias as $c): ?>
+					<a href="/results?c=<?php echo $c['Id'] ?>"><li>
 						<div class="categoria_item">
 
 						<img src="/teste.jpg">
-						<pre>Nome da Categoria</pre><br>
+						<pre><?php echo $c['Nome']; ?></pre><br>
 						
 						</div>
 					</li></a>
-				<?php endfor; ?>
+				<?php endforeach; ?>
 					
 				</ul>
 				</div>

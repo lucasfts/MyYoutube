@@ -13,7 +13,8 @@ class Controller{
 	public function loadTemplate($viewName,$viewData = array()){
 
 		$dados = array();
-
+		$categorias = new Categorias();
+		$dados['categorias'] = $categorias->getCategorias();
 		extract($dados);
 		include 'views/template.php';
 

@@ -8,23 +8,26 @@
 	
 </head>
 <body>
+
 	<div class="formulario" >
 		<form method="post">
-			
 			<img src="/teste.jpg" width="100%" height="150px">
 			<br><br>
-			<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Usuario">
+			<p style="color: red; text-align: center;"><?php echo $erro; ?></p>
+			<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Usuario" required>
 			<br>
-			<input type="email" name="email" id="email" class="form-control" placeholder="Email">
+			<input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
 			<br>
-			<input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">
+			<input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" required>
 			<br>
-			<input type="password" name="senha_confirmar" id="senha_confirmar" class="form-control" placeholder="Confirmar Senha">
+			<input type="password" name="senha_confirmar" id="senha_confirmar" class="form-control" placeholder="Confirmar Senha" required>
 			<br>
-			<input type="submit" value="Login" class="btn btn-danger" >
+			<input type="submit" value="Cadastrar" class="btn btn-danger" >
 			
-		</form>
+			
+		</form>		
 	</div>
+
 </div>
 </body>
 </html>

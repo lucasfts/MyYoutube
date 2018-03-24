@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/assets/css/user.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/users.css">
 
 
 <div class="banner">

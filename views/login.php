@@ -10,9 +10,9 @@
 <body>
 	<div class="formulario">
 		<form method="post">
-			
 			<img src="/teste.jpg" width="100%" height="150px">
 			<br><br>
+			<p style="color: red; text-align: center;"><?php echo $erro; ?></p>
 			<input type="email" name="email" id="email" class="form-control" placeholder="Email">
 			<br>
 			<input type="password" name="senha" id="senha" class="form-control" placeholder="Senha">

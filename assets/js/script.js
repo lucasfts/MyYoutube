@@ -13,3 +13,11 @@ function redefinir(){
 		$("#container_right").css("left","0px");
 	}
 }
+
+function MostrarScroll(obj){
+	$(obj).css("overflow-x","auto");
+}
+
+function EsconderScroll(obj){
+	$(obj).css("overflow-x","hidden");
+}

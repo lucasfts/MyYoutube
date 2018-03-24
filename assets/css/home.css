@@ -2,7 +2,7 @@
 	width: 100%;
 	background-color: #efefef;
 	margin-bottom: 20px;
-	overflow-x: auto;
+	overflow-x: hidden;
 	overflow-y: hidden;
 
 }
