@@ -12,6 +12,13 @@ class resultsController extends Controller{
 		$this->loadTemplate('results',$dados);
 	}
 
+	public function categoria($id){
+	
+		$dados = array();
+
+		$this->loadTemplate('results',$dados);
+	}
+
 	
 
 }

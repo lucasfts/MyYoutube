@@ -39,15 +39,17 @@
 			<h5>213213 Comnetarios</h5><br>
 			<div class="caixa_comentario" id="caixa_comentario">
 				
-
-				<div class="caixa_comentario_textarea" >
-					<textarea id="textarea" placeholder="Adicione um comentario"></textarea>
-				</div>
 				<div class="caixa_comentario_img">
 					<img src="/teste.jpg" " />
 				</div>
+				<div class="caixa_comentario_textarea" >
+					<textarea id="textarea" placeholder="Adicione um comentario"></textarea>
+					<button class="btn btn-default">Comentar</button>	
+				</div>
 				
 				<div style="clear: both;"></div>
+				
+
 				</div>
 				
 			<?php for($i = 0; $i < 10; $i++): ?>

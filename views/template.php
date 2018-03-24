@@ -23,7 +23,7 @@
 				<?php else: ?>
 					<li style="float: right;margin-left: 15px;"><a href="/login/logout"><p class="p_login">Sair</p></a></li>
 					<li style="float: right;">
-						<a href="#"><p class="p_login">Nome do Canal</p></a>
+						<a href="/users/ver/<?php echo $usuario['Id']; ?>"><p class="p_login"><?php echo $usuario['Nome']; ?></p></a>
 					</li>
 				<?php endif ?>
 				
@@ -32,10 +32,10 @@
 		<div class="container_left" id="container_left">
 			<div>
 				<div class="container_left_item">
-					<p>Categorias</p>
+					<h5>Categorias</h5>
 				<ul>
 					<?php foreach($categorias as $c): ?>
-					<a href="/results?c=<?php echo $c['Id'] ?>"><li>
+					<a href="/results/categoria/<?php echo $c['Id'] ?>"><li>
 						<div class="categoria_item">
 
 						<img src="/teste.jpg">

@@ -15,6 +15,10 @@ class Controller{
 		$dados = array();
 		$categorias = new Categorias();
 		$dados['categorias'] = $categorias->getCategorias();
+		if (isset($_SESSION['user'])) {
+			$u = new Usuarios();
+			$dados['usuario'] = $u->getUsuario($_SESSION['user']);
+		}
 		extract($dados);
 		include 'views/template.php';
 

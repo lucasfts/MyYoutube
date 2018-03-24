@@ -33,6 +33,16 @@ class Usuarios extends model
    		$sql = $sql->fetch();
    		return $sql['id'];
    }
+
+   public function getUsuario($id){
+      $sql = $this->db->prepare("select * from usuarios where id = :id");
+      $sql->bindValue(":id", $id);
+      $sql->execute();
+      if ($sql->rowCount() == 0) {
+            throw new Exception("Usuário inexistente", 1);
+      }
+      return $sql->fetch();
+   }
 }
 
 ?>

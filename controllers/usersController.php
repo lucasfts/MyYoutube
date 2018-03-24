@@ -6,11 +6,24 @@ class usersController extends Controller{
 	}
 	
 	public function index(){
-		$dados = array();
-
-		$this->loadTemplate('users',$dados);
-		
+		header("Location: /");
 	}
+
+	public function ver($id){
+		$dados = array();
+		$videos = new Videos();
+		$usuarios = new Usuarios();
+
+		try {
+			$dados['usuario'] = $usuarios->getUsuario($id);
+		} catch (Exception $e) {
+			header("Location: /");
+		}
+
+		$dados['videos'] = $videos->getVideosByUserId($id);
+		$this->loadTemplate('users',$dados);
+	}
+
 
 	
 }
