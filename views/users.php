@@ -10,9 +10,13 @@
 	<div class="user_info">
 		<br>
 		<b style="font-size: 26px"><?php echo $usuario['Nome']; ?></b><br>
-		12312312 inscritos
+		<text id="totalInscritos"></text> Inscritos
 	</div>
-	<button>Inscreva-se</button>
+	<?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
+		<button onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $usuario['Id'] ?>">Inscreva-se</button>
+	<?php else: ?>
+		<a href="/login"><button>Inscreva-se</button></a>
+	<?php endif ?>
 </div>
 
 <div class="container_videos">

@@ -19,10 +19,15 @@
 		<div class="video_descricao_box">
 
 			<div class="autor_box">
-				<img src="/teste.jpg">
-				<pre><b style="font-size: 18px;"><br><?php echo $video['canal']; ?></b><br><br><br ><span>Publicado em 01/01/2000</span>
+				<a href="/users/ver/<?php echo $video['Id_Usuario'] ?>"><img src="/teste.jpg"></a>
+				<pre><b style="font-size: 18px;"><br><a href="/users/ver/<?php echo $video['Id_Usuario'] ?>" style="color: black;"><?php echo $video['canal']; ?></a></b><br><br><br ><span>Publicado em 01/01/2000</span>
 				</pre>
-				<button >Inscreva-se</button>
+				<?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
+					<button onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $video['Id_Usuario'] ?>">Inscreva-se</button>
+				<?php else: ?>
+					<a href="/login"><button>Inscreva-se</button></a>
+				<?php endif ?>
+				
 
 			</div>
 			<div style="clear: both;"></div>
@@ -65,7 +70,7 @@
 	<div class="secundario_right">
 		<?php $qtd = 0; ?>
 		<?php foreach($sugestoes as $s): ?>
-			<a href="#" style="text-decoration: none;color: #000;"><div class="video_recomendado">
+			<a href="/watch?v=<?php echo md5($s['Id']); ?>" style="text-decoration: none;color: #000;"><div class="video_recomendado">
 				<video src="/assets/videos/<?php echo $s['Url'] ?>"></video>
 				<div class="video_recomendado_descricao">
 					<b><?php echo $s['Titulo'] ?></b><br>

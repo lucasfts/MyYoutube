@@ -21,3 +21,20 @@ function MostrarScroll(obj){
 function EsconderScroll(obj){
 	$(obj).css("overflow-x","hidden");
 }
+
+function Inscrever(obj){
+	var canalid = $(obj).data("canalid");
+	var userid = $(obj).data("userid");
+
+	$.ajax({
+		url : "/ajax/Inscrever",
+		type : "post",
+		dataType: "json",
+		data: {userid: userid, canalid: canalid},
+		success:function(json){
+			$(obj).css("backgroundColor",json.background);
+			$(obj).text(json.texto);
+			$('#totalInscritos').text(json.qtInscritos);
+		}
+	});
+}
