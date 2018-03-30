@@ -20,7 +20,7 @@
 
 			<div class="autor_box">
 				<img src="/teste.jpg">
-				<pre><b style="font-size: 18px;"><br>Nome do Canal </b><br><br><br ><span>Publicado em 01/01/2000</span>
+				<pre><b style="font-size: 18px;"><br><?php echo $video['canal']; ?></b><br><br><br ><span>Publicado em 01/01/2000</span>
 				</pre>
 				<button >Inscreva-se</button>
 
@@ -68,7 +68,8 @@
 			<a href="#" style="text-decoration: none;color: #000;"><div class="video_recomendado">
 				<video src="/assets/videos/<?php echo $s['Url'] ?>"></video>
 				<div class="video_recomendado_descricao">
-					<?php echo $s['Titulo'] ?><br>
+					<b><?php echo $s['Titulo'] ?></b><br>
+					<?php echo $s['canal']; ?><br>
 					Num Views	
 				</div>
 

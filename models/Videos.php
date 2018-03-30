@@ -51,15 +51,24 @@ class Videos extends Model
 		return $sql->fetchAll();
 	}
 
-	public function getVideosByCategoriaId($id_categoria){
-		$sql = $this->db->prepare("select * from videos where id_categoria = :id_categoria");
+	public function getVideosByCategoriaId($id_categoria, $limit = 0){
+		$sql = "select videos.*, usuarios.nome as 'canal' from videos 
+		inner join usuarios on usuarios.id = videos.id_usuario 
+		where videos.id_categoria = :id_categoria";
+		if ($limit > 0) {
+			$sql = $sql." limit $limit";
+		}
+
+		$sql = $this->db->prepare($sql);
 		$sql->bindValue(":id_categoria", $id_categoria);
 		$sql->execute();
 		return $sql->fetchAll();
 	}
 
 	public function getRamdomVideos($limit){
-		$sql = $this->db->query("select * from videos order by data_upload limit $limit");
+		$sql = $this->db->query("select videos.*, usuarios.nome as 'canal' from videos 
+		inner join usuarios on usuarios.id = videos.id_usuario
+		 order by videos.data_upload limit $limit");
 		$sql = $sql->fetchAll();
 		shuffle($sql);
 		
@@ -67,7 +76,8 @@ class Videos extends Model
 	}
 
 	public function getVideoByHashId($hash_id){
-		$sql = $this->db->prepare("select * from videos where md5(id) = :id");
+		$sql = $this->db->prepare("select videos.* , usuarios.nome as 'canal' from videos 
+		inner join usuarios on usuarios.id = videos.id_usuario where md5(videos.id) = :id ");
 		$sql->bindValue(":id", $hash_id);
 		$sql->execute();
 		if ($sql->rowCount() == 0) {
