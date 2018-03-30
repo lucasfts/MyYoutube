@@ -14,7 +14,7 @@ class Videos extends Model
 	public function add($id_usuario,$id_categoria, $url, $titulo, $descricao){
 		$sql = "insert into videos
 		 set id_usuario = :id_usuario, id_categoria = :id_categoria, url = :url, 
-		 titulo = :titulo, descricao = :descricao";
+		 titulo = :titulo, descricao = :descricao, data_upload = now()";
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(":id_usuario", $id_usuario);
 		$sql->bindValue(":id_categoria", $id_categoria);
@@ -51,12 +51,37 @@ class Videos extends Model
 		return $sql->fetchAll();
 	}
 
+	public function getVideosByCategoriaId($id_categoria){
+		$sql = $this->db->prepare("select * from videos where id_categoria = :id_categoria");
+		$sql->bindValue(":id_categoria", $id_categoria);
+		$sql->execute();
+		return $sql->fetchAll();
+	}
+
+	public function getRamdomVideos($limit){
+		$sql = $this->db->query("select * from videos order by data_upload limit $limit");
+		$sql = $sql->fetchAll();
+		shuffle($sql);
+		
+		return $sql;
+	}
+
+	public function getVideoByHashId($hash_id){
+		$sql = $this->db->prepare("select * from videos where md5(id) = :id");
+		$sql->bindValue(":id", $hash_id);
+		$sql->execute();
+		if ($sql->rowCount() == 0) {
+			throw new Exception("Video not found", 1);
+		}
+		return $sql->fetch();
+	}
+
 	public function getUserId($id){
 		$sql = $this->db->prepare("select Id_Usuario from videos where id = :id");
 		$sql->bindValue(":id", $id);
 		$sql->execute();
 		if ($sql->rowCount() == 0) {
-			throw new Exception("Video não encontrado", 1);
+			throw new Exception("Usuario não encontrado", 1);
 			
 		}
 		return $sql->fetch()["Id_Usuario"];
