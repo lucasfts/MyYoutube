@@ -13,9 +13,12 @@ class usersController extends Controller{
 		$dados = array();
 		$videos = new Videos();
 		$usuarios = new Usuarios();
+		$inscricao = new Inscricao();
 
 		try {
 			$dados['usuario'] = $usuarios->getUsuario($id);
+			$dados['isInscrito'] = $inscricao->isInscrito($dados['usuario']['Id'], $_SESSION['user']);
+			$dados['totalInscritos'] = $inscricao->getTotalInscritos($dados['usuario']['Id']);
 		} catch (Exception $e) {
 			header("Location: /");
 		}

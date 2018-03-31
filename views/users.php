@@ -10,10 +10,14 @@
 	<div class="user_info">
 		<br>
 		<b style="font-size: 26px"><?php echo $usuario['Nome']; ?></b><br>
-		<text id="totalInscritos"></text> Inscritos
+		<text id="totalInscritos"><?php echo $totalInscritos; ?></text> Inscritos
 	</div>
 	<?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
-		<button onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $usuario['Id'] ?>">Inscreva-se</button>
+		<?php if($isInscrito): ?>
+			<button style="background-color: gray;" onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $usuario['Id'] ?>">Inscrito</button>
+		<?php else: ?>
+			<button  onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $usuario['Id'] ?>">Inscreva-se</button>
+		<?php endif; ?>
 	<?php else: ?>
 		<a href="/login"><button>Inscreva-se</button></a>
 	<?php endif ?>
@@ -29,7 +33,9 @@
 
 	<?php foreach($videos as $v): ?>
 		<div class="video_item">
-			<video poster style="background-color: black;" src="/assets/videos/<?php echo $v['Url']; ?>" width="100%" height="150px" ></video>
+			<a style="width: 100%" href="/watch?v=<?php echo md5($v['Id']) ?>">
+				<video poster style="background-color: black;" src="/assets/videos/<?php echo $v['Url']; ?>" width="100%" height="150px" ></video>
+			</a>
 			<h5><?php echo $v['Titulo']; ?></h5>
 			<p>123213213 Visualizações</p>
 			<p>123213 Likes  e 14123 DESLIKES</p>

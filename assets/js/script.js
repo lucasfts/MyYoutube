@@ -38,3 +38,35 @@ function Inscrever(obj){
 		}
 	});
 }
+
+function like(obj){
+	var videoid = $(obj).data("videoid");
+	var userid = $(obj).data("userid");
+	$.ajax({
+		url : "/ajax/Like",
+		type : "post",
+		dataType: "json",
+		data: {userid: userid, videoid: videoid},
+		success:function(json){
+			console.info("teste");
+			$("#likeTxt").html(json.likeTxt);
+			$("#deslikeTxt").html(json.deslikeTxt);
+		}
+	});
+}
+
+function deslike(obj){
+	var videoid = $(obj).data("videoid");
+	var userid = $(obj).data("userid");
+	$.ajax({
+		url : "/ajax/Deslike",
+		type : "post",
+		dataType: "json",
+		data: {userid: userid, videoid: videoid},
+		success:function(json){
+			console.info("teste");
+			$("#likeTxt").html(json.likeTxt);
+			$("#deslikeTxt").html(json.deslikeTxt);
+		}
+	});
+}

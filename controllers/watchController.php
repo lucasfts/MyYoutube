@@ -8,11 +8,31 @@ class watchController extends Controller{
 	public function index(){
 		$dados = array();
 		$videos = new Videos();
+		$inscricao = new Inscricao();
+		$likes = new Likes();
 		try {
 			if (isset($_GET['v']) && strlen($_GET['v']) == 32) {
 				$dados['video'] = $videos->getVideoByHashId($_GET['v']);
+				$dados['isInscrito'] = $inscricao->isInscrito($dados['video']['Id_Usuario'], $_SESSION['user']);
 				// Retorna no máximo 50 videos para as sugestões
 				$dados['sugestoes'] = $videos->getRamdomVideos(50);
+				$qtlikes = $likes->getLikesByVideoId($dados['video']['Id']);
+				$qtdeslikes = $likes->getDeslikesByVideoId($dados['video']['Id']);
+
+				try {
+					$tipo = $likes->getRegistro($dados['video']['Id'], $_SESSION['user']);
+					if ($tipo['Tipo'] == 1) {
+						$dados['likeTxt'] = "<b>".$qtlikes."</b>";
+						$dados['deslikeTxt'] = $qtdeslikes;
+					}
+					else{
+						$dados['likeTxt'] = $qtlikes;
+						$dados['deslikeTxt'] = "<b>".$qtdeslikes."</b>";
+					}
+				} catch (Exception $e) {
+					$dados['likeTxt'] = $qtlikes;
+					$dados['deslikeTxt'] = $qtdeslikes;
+				}
 			}
 			else{
 				throw new Exception("Identificaçao do video não informada", 1);

@@ -8,10 +8,13 @@
 	<div class="secundario_left">
 		<br>
 		<h3><?php echo $video['Titulo']; ?></h3>
-		<p style="float: left;">Num View</p>
+		<p style="float: left;"><?php echo $video['Views'] ?> Visualizações</p>
 		<div class="likes_box">
-			<button>Like</button>
-			<button>DesLike</button>
+			<img onclick="like(this)" id="likeImg" data-userid="<?php echo $_SESSION['user'] ?>" data-videoid="<?php echo $video['Id'] ?>" src="/assets/images/like.png">
+			<span id="likeTxt"><?php echo $likeTxt; ?></span>
+
+			<img onclick="deslike(this)" id="deslikeImg" data-userid="<?php echo $_SESSION['user'] ?>" data-videoid="<?php echo $video['Id'] ?>" src="/assets/images/deslike.png">
+			<span id="deslikeTxt"><?php echo $deslikeTxt; ?></span>
 		</div>
 		<br>
 		<hr>
@@ -23,7 +26,11 @@
 				<pre><b style="font-size: 18px;"><br><a href="/users/ver/<?php echo $video['Id_Usuario'] ?>" style="color: black;"><?php echo $video['canal']; ?></a></b><br><br><br ><span>Publicado em 01/01/2000</span>
 				</pre>
 				<?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
-					<button onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $video['Id_Usuario'] ?>">Inscreva-se</button>
+					<?php if($isInscrito): ?>
+						<button style="background-color: gray;" onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $video['Id_Usuario'] ?>">Inscrito</button>
+					<?php else: ?>
+						<button onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $video['Id_Usuario'] ?>">Inscreva-se</button>
+					<?php endif; ?>
 				<?php else: ?>
 					<a href="/login"><button>Inscreva-se</button></a>
 				<?php endif ?>

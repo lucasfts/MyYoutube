@@ -165,3 +165,14 @@
 	padding: 2px;
 	width: 100px;
 }
+#likeImg,
+#deslikeImg{
+	width: 20px;
+	cursor: pointer;
+	margin-left: 20px;
+	margin-right: 5px;
+}
+
+#likeImg{
+	margin-bottom: 6px;
+}
