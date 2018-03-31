@@ -3,7 +3,7 @@
 	<?php foreach($videos as $v): ?>
 		<div class="result_item">
 			<a href="/watch?v=<?php echo md5($v['Id']); ?>">
-				<video src="/assets/videos/<?php echo $v['Url'] ?>"></video>
+				<video poster src="/assets/videos/<?php echo $v['Url'] ?>"></video>
 				<div class="info">
 					<h3><?php echo $v['Titulo'] ?><h3>
 						<h5>Canl x  -  1233 Visualizações</h5>

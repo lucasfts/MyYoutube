@@ -1,7 +1,7 @@
 <form method="post" enctype="multipart/form-data" style="width: 97%; margin: auto;">
 	<h2>Videos - Editar</h2>
 	<p style="color: red"><?php echo $erro; ?></p>
-	<video width="100%" height="400px;" style="background-color: black" src="/assets/videos/<?php echo $video['Url']; ?>" ></video>
+	<video poster width="100%" height="400px;" style="background-color: black" src="/assets/videos/<?php echo $video['Url']; ?>" ></video>
 	<br>
 
 	<label for="titulo">Titulo</label>

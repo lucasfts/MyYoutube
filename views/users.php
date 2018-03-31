@@ -29,7 +29,7 @@
 
 	<?php foreach($videos as $v): ?>
 		<div class="video_item">
-			<video style="background-color: black;" src="/assets/videos/<?php echo $v['Url']; ?>" width="100%" height="150px" ></video>
+			<video poster style="background-color: black;" src="/assets/videos/<?php echo $v['Url']; ?>" width="100%" height="150px" ></video>
 			<h5><?php echo $v['Titulo']; ?></h5>
 			<p>123213213 Visualizações</p>
 			<p>123213 Likes  e 14123 DESLIKES</p>

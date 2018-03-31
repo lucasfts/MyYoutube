@@ -65,6 +65,20 @@ class Videos extends Model
 		return $sql->fetchAll();
 	}
 
+	public function getVideosByTitulo($titulo, $limit = 0){
+		$sql = "select videos.*, usuarios.nome as 'canal' from videos 
+		inner join usuarios on usuarios.id = videos.id_usuario 
+		where videos.titulo like :titulo";
+		if ($limit > 0) {
+			$sql = $sql." limit $limit";
+		}
+
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(":titulo", "%".$titulo."%");
+		$sql->execute();
+		return $sql->fetchAll();
+	}
+
 	public function getRamdomVideos($limit){
 		$sql = $this->db->query("select videos.*, usuarios.nome as 'canal' from videos 
 		inner join usuarios on usuarios.id = videos.id_usuario

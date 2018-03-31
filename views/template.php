@@ -12,9 +12,9 @@
 				<li><button style="height:30px;line-height:20px;" onclick="toggleLeft()"><img id="menuimg" src="/assets/images/menu.png"></button></li>	
 				<li><a href="/"><p class="logo">MyYoutube</p></a></li>
 				<li>
-					<form>
-						<input style="border: 1px solid #555" class="form_item caixa_pesquisa" type="search" name="" placeholder="Pesquisar">
-						<input class="btn_submit" type="submit" value="ir">
+					<form action="/results">
+						<input style="border: 1px solid #555" class="form_item caixa_pesquisa" type="search" name="q" placeholder="Pesquisar" required>
+						<input class="btn_submit" type="submit" value=" ">
 					</form>
 					
 				</li>

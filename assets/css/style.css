@@ -56,13 +56,17 @@ a:hover{
 	height: 30px;
 	border: 0;
 	background-color: #bbb;
-	line-height: 30px;
+	line-height: 25px;
 	width: 60px;
 	cursor: pointer;
 	margin-right: 0;
 	margin-left: -5px;
 	padding: 0;
-	border: none;
+	border: 1px solid #000;
+	background-image: url("/assets/images/search.png");
+	background-size: 25px 25px;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 .p_login{
 	color: red;
