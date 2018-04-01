@@ -84,6 +84,17 @@ class ajaxController extends Controller{
 		echo json_encode($dados);
 	}
 
+	public function Comentar(){
+
+		if (isset($_POST['comentario']) && strlen(trim($_POST['comentario'])) > 0){
+			$comentario = addslashes($_POST['comentario']);
+			$userId = addslashes($_POST['userid']);
+			$videoId = addslashes($_POST['videoid']);
+			$comentarios = new Comentarios();
+			$comentarios->addComentario($userId, $videoId, $comentario);
+		}
+	}
+
 }
 
 ?>

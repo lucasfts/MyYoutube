@@ -10,11 +10,19 @@
 		<h3><?php echo $video['Titulo']; ?></h3>
 		<p style="float: left;"><?php echo $video['Views'] ?> Visualizações</p>
 		<div class="likes_box">
-			<img onclick="like(this)" id="likeImg" data-userid="<?php echo $_SESSION['user'] ?>" data-videoid="<?php echo $video['Id'] ?>" src="/assets/images/like.png">
-			<span id="likeTxt"><?php echo $likeTxt; ?></span>
+			<?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
+				<img onclick="like(this)" id="likeImg" data-userid="<?php echo $_SESSION['user'] ?>" data-videoid="<?php echo $video['Id'] ?>" src="/assets/images/like.png">
+				<span id="likeTxt"><?php echo $likeTxt; ?></span>
 
-			<img onclick="deslike(this)" id="deslikeImg" data-userid="<?php echo $_SESSION['user'] ?>" data-videoid="<?php echo $video['Id'] ?>" src="/assets/images/deslike.png">
-			<span id="deslikeTxt"><?php echo $deslikeTxt; ?></span>
+				<img onclick="deslike(this)" id="deslikeImg" data-userid="<?php echo $_SESSION['user'] ?>" data-videoid="<?php echo $video['Id'] ?>" src="/assets/images/deslike.png">
+				<span id="deslikeTxt"><?php echo $deslikeTxt; ?></span>
+			<?php else: ?>
+				<img onclick="window.location.href='/login'" id="likeImg" src="/assets/images/like.png">
+				<span id="likeTxt"><?php echo $likeTxt; ?></span>
+
+				<img onclick="window.location.href='/login'" id="deslikeImg" id="deslikeImg" src="/assets/images/deslike.png">
+				<span id="deslikeTxt"><?php echo $deslikeTxt; ?></span>
+			<?php endif ?>
 		</div>
 		<br>
 		<hr>
@@ -55,23 +63,28 @@
 					<img src="/teste.jpg" " />
 				</div>
 				<div class="caixa_comentario_textarea" >
-					<textarea id="textarea" placeholder="Adicione um comentario"></textarea>
-					<button class="btn btn-default">Comentar</button>	
+					<textarea rows="1" id="textarea" placeholder="Adicione um comentario" onkeyup="resizeLinhas()"></textarea>
+					<?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
+						<button class="btn btn-default" onclick="Comentar(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-videoid="<?php echo $video['Id'] ?>" data-canalnome="<?php echo $video['canal']; ?>" >Comentar</button>	
+					<?php else: ?>
+						<button class="btn btn-default" onclick="window.location.href='/login'" >Comentar</button>	
+					<?php endif; ?>
 				</div>
 				
 				<div style="clear: both;"></div>
 				
 
 				</div>
-				
-			<?php for($i = 0; $i < 10; $i++): ?>
+				<div id="container_comentarios">
+			<?php foreach($comentarios as $c): ?>
 				<div class="comentario_item">
 
 				<img src="/teste.jpg">
-				<pre class="comentario_autor">Nome do Canal</pre><br>
-				<pre class="comentario_texto">fasdfasdfasdfasdfasdf</pre>
+				<pre class="comentario_autor"><?php echo $c['Autor']; ?></pre><br>
+				<pre class="comentario_texto"><?php echo $c['Comentario']; ?></pre>
 				</div>
-			<?php endfor; ?>
+			<?php endforeach; ?>
+			</div>
 		</div>
 	</div>
 	<div class="secundario_right">
@@ -103,5 +116,10 @@
 		var caixa = $("#caixa_comentario");
 		var textarea = $("#textarea");
 		caixa.height(textarea.height())  ;
+	}
+
+	function resizeLinhas(){
+		var linhas =  $("#textarea").val().split("\n").length;
+		$("#textarea").attr("rows",linhas);
 	}
 </script>

@@ -70,3 +70,29 @@ function deslike(obj){
 		}
 	});
 }
+
+
+function Comentar(obj){
+	var comentario = $("#textarea").val();
+	var videoid = $(obj).data("videoid");
+	var userid = $(obj).data("userid");
+	var canalnome = $(obj).data("canalnome");
+
+
+	$.ajax({
+		url : "/ajax/Comentar",
+		type : "post",
+		data: {userid: userid, videoid: videoid, comentario: comentario},
+		success:function(){
+			$("#textarea").val("");
+			$("#textarea").attr("rows","1");
+			var html = '<div class="comentario_item">'+
+				'<img src="/teste.jpg">'+
+				'<pre class="comentario_autor">'+canalnome+'</pre><br>'+
+				'<pre class="comentario_texto">'+comentario+'</pre>'+
+				'</div>';
+			$("#container_comentarios").prepend(html);
+
+		}
+	});
+}

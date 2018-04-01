@@ -10,25 +10,37 @@ class watchController extends Controller{
 		$videos = new Videos();
 		$inscricao = new Inscricao();
 		$likes = new Likes();
+		$comentarios = new Comentarios();
+
 		try {
 			if (isset($_GET['v']) && strlen($_GET['v']) == 32) {
 				$dados['video'] = $videos->getVideoByHashId($_GET['v']);
-				$dados['isInscrito'] = $inscricao->isInscrito($dados['video']['Id_Usuario'], $_SESSION['user']);
+				
 				// Retorna no máximo 50 videos para as sugestões
 				$dados['sugestoes'] = $videos->getRamdomVideos(50);
 				$qtlikes = $likes->getLikesByVideoId($dados['video']['Id']);
 				$qtdeslikes = $likes->getDeslikesByVideoId($dados['video']['Id']);
 
+				$dados['comentarios'] = $comentarios->getComentarios($dados['video']['Id']);
+				
 				try {
-					$tipo = $likes->getRegistro($dados['video']['Id'], $_SESSION['user']);
-					if ($tipo['Tipo'] == 1) {
-						$dados['likeTxt'] = "<b>".$qtlikes."</b>";
-						$dados['deslikeTxt'] = $qtdeslikes;
+					if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+						$dados['isInscrito'] = $inscricao->isInscrito($dados['video']['Id_Usuario'], $_SESSION['user']);
+						$tipo = $likes->getRegistro($dados['video']['Id'], $_SESSION['user']);
+						if ($tipo['Tipo'] == 1) {
+							$dados['likeTxt'] = "<b>".$qtlikes."</b>";
+							$dados['deslikeTxt'] = $qtdeslikes;
+						}
+						else{
+							$dados['likeTxt'] = $qtlikes;
+							$dados['deslikeTxt'] = "<b>".$qtdeslikes."</b>";
+						}
 					}
 					else{
 						$dados['likeTxt'] = $qtlikes;
-						$dados['deslikeTxt'] = "<b>".$qtdeslikes."</b>";
+						$dados['deslikeTxt'] = $qtdeslikes;
 					}
+					
 				} catch (Exception $e) {
 					$dados['likeTxt'] = $qtlikes;
 					$dados['deslikeTxt'] = $qtdeslikes;
