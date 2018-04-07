@@ -11,6 +11,7 @@ class watchController extends Controller{
 		$inscricao = new Inscricao();
 		$likes = new Likes();
 		$comentarios = new Comentarios();
+		$usuarios = new Usuarios();
 
 		try {
 			if (isset($_GET['v']) && strlen($_GET['v']) == 32) {
@@ -25,6 +26,7 @@ class watchController extends Controller{
 				
 				try {
 					if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+						$dados['usuario'] = $usuarios->getUsuario($_SESSION['user']);
 						$dados['isInscrito'] = $inscricao->isInscrito($dados['video']['Id_Usuario'], $_SESSION['user']);
 						$tipo = $likes->getRegistro($dados['video']['Id'], $_SESSION['user']);
 						if ($tipo['Tipo'] == 1) {

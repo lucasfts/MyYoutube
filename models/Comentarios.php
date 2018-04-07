@@ -11,7 +11,7 @@ class Comentarios extends Model
 	}
 
 	public function getComentarios($videoId){
-		$sql = $this->db->prepare("select comentarios.*, usuarios.nome as 'Autor' from comentarios inner join usuarios on comentarios.Id_Usuario = usuarios.id where comentarios.Id_Video = :videoId");
+		$sql = $this->db->prepare("select comentarios.*, usuarios.nome as 'Autor', usuarios.img_perfil as 'Autor_Img' from comentarios inner join usuarios on comentarios.Id_Usuario = usuarios.id where comentarios.Id_Video = :videoId");
 		$sql->bindValue(":videoId",$videoId);
 		$sql->execute();
 		return $sql->fetchAll();

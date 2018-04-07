@@ -30,9 +30,11 @@ a:hover{
 }
 #menuimg{
 	width: 35px;
-	
+	height: 35px;
+	margin-bottom: 5px;
+	cursor: pointer;
 }
-.caixa_pesquisa{
+	{
 	min-width: 400px;
 	margin-left: 100px;
 	margin-right: 0;
@@ -47,6 +49,16 @@ a:hover{
 	border: 0;
 	
 }
+.caixa_pesquisa{
+	min-width: 400px;
+	margin-left: 100px;
+	margin-right: 0;
+	padding: 0;
+	padding-left: 10px;
+	height: 30px;
+	background-color: #ddd;
+}
+
 .logo{
 	color: red;
 	font-size: 20px;
@@ -127,3 +139,40 @@ a:hover{
 	margin-right: 10px;
 }
 
+
+@media only screen and (max-width: 900px){
+	.caixa_pesquisa{
+		margin-left: 50px;
+		min-width: 300px;
+	}
+}
+
+@media only screen and (max-width: 800px){
+	#container_left,
+	#menuimg{
+		display: none;
+	}
+	.caixa_pesquisa{
+		margin-left: 0;
+		min-width: auto;
+	}
+	#container_right{
+		left: 0;
+	}
+}
+@media only screen and (max-width: 600px){
+	.topo{
+		height: 160px;
+		margin-top: -40px;
+	}
+	.topo ul li{
+		width: 100%;
+		float: left;
+	}
+	li:nth-child(4){
+		padding-left: 20px;
+	}
+	.container_right{
+		top: 160px;
+	}
+}

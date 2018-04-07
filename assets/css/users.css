@@ -1,10 +1,12 @@
 .banner{
 	
-	height: 270px;
+	height: 200px;
 	background-color: black;
 	margin-left: -20px;
 	margin-right: -20px;
 	margin-top: -20px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 .user_header{
 	height: 100px;
@@ -80,5 +82,12 @@
 .container_videos a{
 	margin-right: 8px;
 }
-
-
+#imgCamera{
+	height: 30px;
+	float: right;
+	background-color: white;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-top: 167px;
+	margin-right: 3px;
+}

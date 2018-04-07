@@ -9,7 +9,7 @@
 <body>
 		<div class="topo">	
 			<ul>
-				<li><button style="height:30px;line-height:20px;" onclick="toggleLeft()"><img id="menuimg" src="/assets/images/menu.png"></button></li>	
+				<li><img onclick="toggleLeft()" id="menuimg" src="/assets/images/menu.png"></li>	
 				<li><a href="/"><p class="logo">MyYoutube</p></a></li>
 				<li>
 					<form action="/results">
@@ -38,7 +38,7 @@
 					<a href="/results/categoria/<?php echo $c['Id'] ?>"><li>
 						<div class="categoria_item">
 
-						<img src="/teste.jpg">
+						<img src="/assets/images/categoria.png">
 						<pre><?php echo $c['Nome']; ?></pre><br>
 						
 						</div>

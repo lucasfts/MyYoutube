@@ -86,7 +86,7 @@ class ajaxController extends Controller{
 
 	public function Comentar(){
 
-		if (isset($_POST['comentario']) && strlen(trim($_POST['comentario'])) > 0){
+		if (isset($_POST['comentario']) && !empty($_POST['comentario'])){
 			$comentario = addslashes($_POST['comentario']);
 			$userId = addslashes($_POST['userid']);
 			$videoId = addslashes($_POST['videoid']);

@@ -97,7 +97,7 @@ class Videos extends Model
 
 	public function getVideoByHashId($hash_id){
 		$this->atualizarViews($hash_id);
-		$sql = $this->db->prepare("select videos.* , usuarios.nome as 'canal' from videos 
+		$sql = $this->db->prepare("select videos.* , usuarios.nome as 'canal', usuarios.img_perfil as 'canal_img' from videos 
 		inner join usuarios on usuarios.id = videos.id_usuario where md5(videos.id) = :id ");
 		$sql->bindValue(":id", $hash_id);
 		$sql->execute();

@@ -77,7 +77,12 @@ function Comentar(obj){
 	var videoid = $(obj).data("videoid");
 	var userid = $(obj).data("userid");
 	var canalnome = $(obj).data("canalnome");
+	var qtComentarios = parseInt($("#qtComentarios").html());
+	var imgperfil = $(obj).data("imgperfil");
 
+	if (comentario.trim().length == 0) {
+		return;
+	}
 
 	$.ajax({
 		url : "/ajax/Comentar",
@@ -86,12 +91,16 @@ function Comentar(obj){
 		success:function(){
 			$("#textarea").val("");
 			$("#textarea").attr("rows","1");
-			var html = '<div class="comentario_item">'+
-				'<img src="/teste.jpg">'+
+			var html = '<a href="/users/ver/'+userid+'">'+
+				'<div class="comentario_item">'+
+				'<img src="/assets/images/'+imgperfil+'">'+
 				'<pre class="comentario_autor">'+canalnome+'</pre><br>'+
+				'</a>'+
 				'<pre class="comentario_texto">'+comentario+'</pre>'+
 				'</div>';
 			$("#container_comentarios").prepend(html);
+			 $("#qtComentarios").html(qtComentarios+1);
+
 
 		}
 	});

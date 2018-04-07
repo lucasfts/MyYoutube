@@ -30,14 +30,16 @@
 		<div class="video_descricao_box">
 
 			<div class="autor_box">
-				<a href="/users/ver/<?php echo $video['Id_Usuario'] ?>"><img src="/teste.jpg"></a>
-				<pre><b style="font-size: 18px;"><br><a href="/users/ver/<?php echo $video['Id_Usuario'] ?>" style="color: black;"><?php echo $video['canal']; ?></a></b><br><br><br ><span>Publicado em 01/01/2000</span>
+				<a href="/users/ver/<?php echo $video['Id_Usuario'] ?>"><img src="/assets/images/<?php echo $video['canal_img']; ?>"></a>
+				<pre><b style="font-size: 18px;"><br><a href="/users/ver/<?php echo $video['Id_Usuario'] ?>" style="color: black;"><?php echo $video['canal']; ?></a></b><br><br><br ><br><span>Publicado em <?php echo date("d/m/Y",strtotime($video['Data_Upload'])); ?></span>
 				</pre>
 				<?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
-					<?php if($isInscrito): ?>
-						<button style="background-color: gray;" onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $video['Id_Usuario'] ?>">Inscrito</button>
-					<?php else: ?>
-						<button onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $video['Id_Usuario'] ?>">Inscreva-se</button>
+					<?php if($_SESSION['user'] != $video['Id_Usuario']): ?>
+						<?php if($isInscrito): ?>
+							<button style="background-color: gray;" onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $video['Id_Usuario'] ?>">Inscrito</button>
+						<?php else: ?>
+							<button onclick="Inscrever(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-canalid="<?php echo $video['Id_Usuario'] ?>">Inscreva-se</button>
+						<?php endif; ?>
 					<?php endif; ?>
 				<?php else: ?>
 					<a href="/login"><button>Inscreva-se</button></a>
@@ -56,16 +58,16 @@
 
 		</div>
 		<div class="comentarios_box">
-			<h5>213213 Comentários</h5><br>
+			<h5 ><text id="qtComentarios"><?php echo count($comentarios); ?></text> Comentários</h5><br>
 			<div class="caixa_comentario" id="caixa_comentario">
 				
 				<div class="caixa_comentario_img">
-					<img src="/teste.jpg" " />
+					<img src="/assets/images/<?php echo isset($_SESSION['user']) ? $usuario['img_perfil'] : "user.png"; ?>" />
 				</div>
 				<div class="caixa_comentario_textarea" >
 					<textarea rows="1" id="textarea" placeholder="Adicione um comentario" onkeyup="resizeLinhas()"></textarea>
 					<?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
-						<button class="btn btn-default" onclick="Comentar(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-videoid="<?php echo $video['Id'] ?>" data-canalnome="<?php echo $video['canal']; ?>" >Comentar</button>	
+						<button class="btn btn-default" onclick="Comentar(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-videoid="<?php echo $video['Id'] ?>" data-canalnome="<?php echo $video['canal']; ?>"  data-imgperfil="<?php echo $usuario['img_perfil'] ?>">Comentar</button>	
 					<?php else: ?>
 						<button class="btn btn-default" onclick="window.location.href='/login'" >Comentar</button>	
 					<?php endif; ?>
@@ -79,8 +81,10 @@
 			<?php foreach($comentarios as $c): ?>
 				<div class="comentario_item">
 
-				<img src="/teste.jpg">
-				<pre class="comentario_autor"><?php echo $c['Autor']; ?></pre><br>
+				<a href="/users/ver/<?php echo $c['Id_Usuario']; ?>">
+					<img src="/assets/images/<?php echo $c['Autor_Img']; ?>">
+					<pre class="comentario_autor"><?php echo $c['Autor']; ?></pre><br>
+				</a>	
 				<pre class="comentario_texto"><?php echo $c['Comentario']; ?></pre>
 				</div>
 			<?php endforeach; ?>
@@ -95,7 +99,7 @@
 				<div class="video_recomendado_descricao">
 					<b><?php echo $s['Titulo'] ?></b><br>
 					<?php echo $s['canal']; ?><br>
-					Num Views	
+					<?php echo $s['Views']; ?> Visualizações	
 				</div>
 
 			</div></a>

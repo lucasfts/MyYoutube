@@ -3,7 +3,7 @@ class Usuarios extends model
 {
 	public function add($nome, $email, $senha){
 		if ($this->verificaEmail($email)) {
-			$sql = $this->db->prepare("insert into usuarios set nome = :nome, email = :email, senha = :senha");
+			$sql = $this->db->prepare("insert into usuarios set nome = :nome, email = :email, senha = :senha, img_fundo = 'banner.png', img_perfil = 'user.png'");
    			$sql->bindValue(":email", $email);
    			$sql->bindValue(":nome", $nome);
    			$sql->bindValue(":senha", $senha);
@@ -42,6 +42,20 @@ class Usuarios extends model
             throw new Exception("Usuário inexistente", 1);
       }
       return $sql->fetch();
+   }
+
+   public function atualizarImgFundo($id_usuario, $filename){
+      $sql = $this->db->prepare("update usuarios set img_fundo = :img_fundo where id = :id");
+      $sql->bindValue(":id", $id_usuario);
+      $sql->bindValue(":img_fundo", $filename);
+      $sql->execute();
+   }
+
+   public function atualizarImgPerfil($id_usuario, $filename){
+      $sql = $this->db->prepare("update usuarios set img_perfil = :img_perfil where id = :id");
+      $sql->bindValue(":id", $id_usuario);
+      $sql->bindValue(":img_perfil", $filename);
+      $sql->execute();
    }
 }
 
