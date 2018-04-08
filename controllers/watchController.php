@@ -27,7 +27,7 @@ class watchController extends Controller{
 				try {
 					if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 						$dados['usuario'] = $usuarios->getUsuario($_SESSION['user']);
-						$dados['isInscrito'] = $inscricao->isInscrito($dados['video']['Id_Usuario'], $_SESSION['user']);
+						$dados['isInscrito'] = $inscricao->isInscrito($_SESSION['user'],$dados['video']['Id_Usuario']);
 						$tipo = $likes->getRegistro($dados['video']['Id'], $_SESSION['user']);
 						if ($tipo['Tipo'] == 1) {
 							$dados['likeTxt'] = "<b>".$qtlikes."</b>";

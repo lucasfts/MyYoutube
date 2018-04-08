@@ -19,7 +19,7 @@ class usersController extends Controller{
 		try {
 			$dados['usuario'] = $usuarios->getUsuario($id);
 			if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-				$dados['isInscrito'] = $inscricao->isInscrito($dados['usuario']['Id'], $_SESSION['user']);
+				$dados['isInscrito'] = $inscricao->isInscrito($_SESSION['user'],$dados['usuario']['Id']);
 			}
 			$dados['totalInscritos'] = $inscricao->getTotalInscritos($dados['usuario']['Id']);
 		} catch (Exception $e) {

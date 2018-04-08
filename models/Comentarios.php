@@ -8,6 +8,7 @@ class Comentarios extends Model
 		$sql->bindValue(":videoId", $videoId);
 		$sql->bindValue(":comentario", $comentario);
 		$sql->execute();
+		return $this->db->lastInsertId();
 	}
 
 	public function getComentarios($videoId){
@@ -15,6 +16,13 @@ class Comentarios extends Model
 		$sql->bindValue(":videoId",$videoId);
 		$sql->execute();
 		return $sql->fetchAll();
+	}
+
+	public function Excluir($id_comentario, $id_usuario){
+		$sql = $this->db->prepare("delete from comentarios where id = :id and id_usuario = :id_usuario");
+		$sql->bindValue(":id",$id_comentario);
+		$sql->bindValue(":id_usuario",$id_usuario);
+		$sql->execute();
 	}
 
 }

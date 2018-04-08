@@ -94,6 +94,7 @@
 	border: 1px solid #ccc;
 	padding: 5px;
 
+
 }
 
 
@@ -114,8 +115,11 @@
 .comentario_texto{
 	position: absolute;
 	left: 40px;
+	right: 100px;
 	font-weight: normal;
 	padding-left: 10px;
+	height: 40px;
+	
 }
 
 .likes_box{
@@ -172,6 +176,10 @@
 
 #likeImg{
 	margin-bottom: 6px;
+}
+.comentarioDelete{
+	float: right;
+	margin-right: 12px;
 }
 
 

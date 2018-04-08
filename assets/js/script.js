@@ -89,23 +89,37 @@ function Comentar(obj){
 	}
 
 	$.ajax({
-		url : "/ajax/Comentar",
-		type : "post",
+		url: "/ajax/Comentar",
+		type: "post",
 		data: {userid: userid, videoid: videoid, comentario: comentario},
-		success:function(){
+		success:function(id_comentario){
 			$("#textarea").val("");
 			$("#textarea").attr("rows","1");
-			var html = '<a href="/users/ver/'+userid+'">'+
-				'<div class="comentario_item">'+
+			var html = '<div class="comentario_item" id="comentario'+id_comentario+'">'+
+				'<a href="/users/ver/'+userid+'">'+
 				'<img src="/assets/images/'+imgperfil+'">'+
 				'<pre class="comentario_autor">'+canalnome+' - '+data+'</pre><br>'+
 				'</a>'+
 				'<pre class="comentario_texto">'+comentario+'</pre>'+
+				'<div  class="comentarioDelete">'+
+						'<a href="#" onclick="ExcluirComent(\''+id_comentario+'\')">Excluir</a>'+
+					'</div>'+
 				'</div>';
 			$("#container_comentarios").prepend(html);
 			 $("#qtComentarios").html(qtComentarios+1);
 
 
+		}
+	});
+}
+
+function ExcluirComent(id){
+	$.ajax({
+		type: "post",
+		url: "/ajax/ExcluirComent",
+		data: {id_comentario: id},
+		success: function(){
+			$("#comentario"+id).remove();
 		}
 	});
 }

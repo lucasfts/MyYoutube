@@ -79,13 +79,19 @@
 				</div>
 				<div id="container_comentarios">
 			<?php foreach($comentarios as $c): ?>
-				<div class="comentario_item">
+				<div class="comentario_item" id="comentario<?php  echo $c['Id'];?>">
 
 				<a href="/users/ver/<?php echo $c['Id_Usuario']; ?>">
 					<img src="/assets/images/<?php echo $c['Autor_Img']; ?>">
-					<pre class="comentario_autor"><?php echo $c['Autor']." - ".date("d/m/Y",strtotime($c['Data'])); ?></pre><br>
+					<pre class="comentario_autor"><?php echo $c['Autor']." - ".date("d/m/Y",strtotime($c['Data'])); ?> </pre>
+					<br>
 				</a>	
 				<pre class="comentario_texto"><?php echo $c['Comentario']; ?></pre>
+					<?php if (isset($_SESSION['user']) && $_SESSION['user'] == $c['Id_Usuario']): ?>
+						<div  class="comentarioDelete">
+							<a href="#" onclick="ExcluirComent(<?php  echo $c['Id'];?>)">Excluir</a>
+						</div>
+					<?php endif ?>
 				</div>
 			<?php endforeach; ?>
 			</div>

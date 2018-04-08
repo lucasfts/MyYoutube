@@ -91,8 +91,15 @@ class ajaxController extends Controller{
 			$userId = addslashes($_POST['userid']);
 			$videoId = addslashes($_POST['videoid']);
 			$comentarios = new Comentarios();
-			$comentarios->addComentario($userId, $videoId, $comentario);
+			$id = $comentarios->addComentario($userId, $videoId, $comentario);
+			echo $id;
 		}
+	}
+
+	public function ExcluirComent(){
+		$comentarios = new Comentarios();
+		$id_comentario = $_POST['id_comentario'];
+		$comentarios->Excluir($id_comentario, $_SESSION['user']);
 	}
 
 }
