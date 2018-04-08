@@ -31,6 +31,11 @@
 		</div>
 		<div class="container_left" id="container_left">
 			<div>
+				<div style="margin-left: 25px;margin-top: 15px;border: 1px solid #999;width: 230px;">
+					<a href="https://github.com/lucasfts" >
+					<img src="/assets/images/github.png" height="35px" >https://github.com/lucasfts
+					</a>
+				</div>
 				<div class="container_left_item">
 					<h5>Categorias</h5>
 				<ul style="margin-top: 5px;">

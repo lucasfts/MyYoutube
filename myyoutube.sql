@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: 23-Fev-2018 às 18:33
--- Versão do servidor: 5.7.19
--- PHP Version: 5.6.31
+-- Host: 127.0.0.1
+-- Generation Time: 08-Abr-2018 às 14:59
+-- Versão do servidor: 5.7.14
+-- PHP Version: 7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,28 +23,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categoria`
+-- Estrutura da tabela `categorias`
 --
 
-DROP TABLE IF EXISTS `categoria`;
-CREATE TABLE IF NOT EXISTS `categoria` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(50) NOT NULL,
-  PRIMARY KEY (`Id`)
+CREATE TABLE `categorias` (
+  `Id` int(11) NOT NULL,
+  `Nome` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `categorias`
+--
+
+INSERT INTO `categorias` (`Id`, `Nome`) VALUES
+(1, 'Musica'),
+(2, 'Esportes'),
+(3, 'Noticias'),
+(4, 'Jogos'),
+(5, 'Tecnologia'),
+(6, 'Outros');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `comentario`
+-- Estrutura da tabela `comentarios`
 --
 
-DROP TABLE IF EXISTS `comentario`;
-CREATE TABLE IF NOT EXISTS `comentario` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comentarios` (
+  `Id` int(11) NOT NULL,
   `Id_Usuario` int(11) NOT NULL,
   `Id_Video` int(11) NOT NULL,
-  PRIMARY KEY (`Id`)
+  `Comentario` text NOT NULL,
+  `Data` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -55,12 +63,10 @@ CREATE TABLE IF NOT EXISTS `comentario` (
 -- Estrutura da tabela `inscricao`
 --
 
-DROP TABLE IF EXISTS `inscricao`;
-CREATE TABLE IF NOT EXISTS `inscricao` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `inscricao` (
+  `Id` int(11) NOT NULL,
   `Id_Canal` int(11) NOT NULL,
-  `Id_Inscrito` int(11) NOT NULL,
-  PRIMARY KEY (`Id`)
+  `Id_Inscrito` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -69,48 +75,119 @@ CREATE TABLE IF NOT EXISTS `inscricao` (
 -- Estrutura da tabela `likes`
 --
 
-DROP TABLE IF EXISTS `likes`;
-CREATE TABLE IF NOT EXISTS `likes` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `likes` (
+  `Id` int(11) NOT NULL,
   `Id_Video` int(11) NOT NULL,
   `Id_Usuario` int(11) NOT NULL,
-  `Tipo` int(11) NOT NULL,
-  PRIMARY KEY (`Id`)
+  `Tipo` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura da tabela `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuario`;
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuarios` (
+  `Id` int(11) NOT NULL,
   `Nome` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Senha` varchar(32) NOT NULL,
-  PRIMARY KEY (`Id`)
+  `img_fundo` varchar(100) NOT NULL,
+  `img_perfil` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `video`
+-- Estrutura da tabela `videos`
 --
 
-DROP TABLE IF EXISTS `video`;
-CREATE TABLE IF NOT EXISTS `video` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `videos` (
+  `Id` int(11) NOT NULL,
   `Id_Usuario` int(11) NOT NULL,
   `Id_Categoria` int(11) NOT NULL,
   `Url` varchar(50) NOT NULL,
   `Titulo` varchar(50) NOT NULL,
   `Descricao` text,
-  PRIMARY KEY (`Id`)
+  `Data_Upload` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Views` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-COMMIT;
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `inscricao`
+--
+ALTER TABLE `inscricao`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `inscricao`
+--
+ALTER TABLE `inscricao`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
