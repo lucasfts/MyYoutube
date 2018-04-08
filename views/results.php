@@ -6,7 +6,7 @@
 				<video poster src="/assets/videos/<?php echo $v['Url'] ?>"></video>
 				<div class="info">
 					<h3><?php echo $v['Titulo'] ?><h3>
-						<h5>Canl x  -  1233 Visualizações</h5>
+						<h5><?php echo $v['canal']; ?>  -  <?php echo $v['Views']; ?> Visualizações</h5>
 						<p><?php echo $v['Descricao'] ?></p>
 					</div>
 				</div>

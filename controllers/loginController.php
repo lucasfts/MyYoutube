@@ -36,7 +36,12 @@ class loginController extends Controller{
 				}
 				$usuarios = new Usuarios();
 				$usuarios->add($nome, $email, $senha);
-				echo "<h1 style='color:green;'>Cadastro efetuado com sucesso</h1>";
+				echo '<div style="padding: 20px; text-align: center; color: green">
+						<h1>Cadastro realizado com sucesso</h1>
+						<a href="/login">
+							<h2 style="text-decoration: none;">Clique para fazer login</h2>
+						</a>
+					</div>';
 				exit();
 			} catch (Exception $e) {
 				$dados["erro"] = $e->getMessage();

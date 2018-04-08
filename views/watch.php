@@ -83,7 +83,7 @@
 
 				<a href="/users/ver/<?php echo $c['Id_Usuario']; ?>">
 					<img src="/assets/images/<?php echo $c['Autor_Img']; ?>">
-					<pre class="comentario_autor"><?php echo $c['Autor']; ?></pre><br>
+					<pre class="comentario_autor"><?php echo $c['Autor']." - ".date("d/m/Y",strtotime($c['Data'])); ?></pre><br>
 				</a>	
 				<pre class="comentario_texto"><?php echo $c['Comentario']; ?></pre>
 				</div>
@@ -91,18 +91,22 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="secundario_right">
 		<?php $qtd = 0; ?>
 		<?php foreach($sugestoes as $s): ?>
+			
 			<a href="/watch?v=<?php echo md5($s['Id']); ?>" style="text-decoration: none;color: #000;"><div class="video_recomendado">
 				<video poster src="/assets/videos/<?php echo $s['Url'] ?>"></video>
 				<div class="video_recomendado_descricao">
 					<b><?php echo $s['Titulo'] ?></b><br>
 					<?php echo $s['canal']; ?><br>
 					<?php echo $s['Views']; ?> Visualizações	
-				</div>
 
+				</div>
+				
 			</div></a>
+			<hr>
 			<?php 
 				$qtd++;
 				if ($qtd == 10) break;

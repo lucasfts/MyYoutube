@@ -10,7 +10,7 @@
 					<div class="descricao">
 						<a href="/watch" class="titulo_video"><?php echo $v['Titulo']; ?></a><br>
 						<span>Autor: <?php echo $v['canal']; ?></span> <br>
-						<span>Visualizações</span>
+						<span><?php echo $v['Views']; ?> Visualizações</span>
 					</div>					
 				</div>
 			<?php endforeach; ?>

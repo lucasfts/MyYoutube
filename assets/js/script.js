@@ -79,6 +79,10 @@ function Comentar(obj){
 	var canalnome = $(obj).data("canalnome");
 	var qtComentarios = parseInt($("#qtComentarios").html());
 	var imgperfil = $(obj).data("imgperfil");
+	var data = new Date();
+	var dia = data.getDate() < 10 ? '0'+data.getDate() : data.getDate();
+	var mes = (data.getMonth()+1) < 10 ? '0'+(data.getMonth()+1) : (data.getMonth()+1);
+	data = dia+'/'+mes+'/'+data.getFullYear();
 
 	if (comentario.trim().length == 0) {
 		return;
@@ -94,7 +98,7 @@ function Comentar(obj){
 			var html = '<a href="/users/ver/'+userid+'">'+
 				'<div class="comentario_item">'+
 				'<img src="/assets/images/'+imgperfil+'">'+
-				'<pre class="comentario_autor">'+canalnome+'</pre><br>'+
+				'<pre class="comentario_autor">'+canalnome+' - '+data+'</pre><br>'+
 				'</a>'+
 				'<pre class="comentario_texto">'+comentario+'</pre>'+
 				'</div>';

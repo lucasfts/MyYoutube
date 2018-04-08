@@ -18,7 +18,9 @@ class usersController extends Controller{
 
 		try {
 			$dados['usuario'] = $usuarios->getUsuario($id);
-			$dados['isInscrito'] = $inscricao->isInscrito($dados['usuario']['Id'], $_SESSION['user']);
+			if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+				$dados['isInscrito'] = $inscricao->isInscrito($dados['usuario']['Id'], $_SESSION['user']);
+			}
 			$dados['totalInscritos'] = $inscricao->getTotalInscritos($dados['usuario']['Id']);
 		} catch (Exception $e) {
 			header("Location: /");
@@ -34,33 +36,39 @@ class usersController extends Controller{
 	}
 
 	public function images($id_usuario){
-		$dados = array();
-		$usuarios = new Usuarios();
-		$alterado = false;
+		if(isset($_SESSION['user']) && $_SESSION['user'] == $id_usuario){
+			$dados = array();
+			$usuarios = new Usuarios();
+			$alterado = false;
 
-		if (isset($_FILES['img_fundo']) && !empty($_FILES['img_fundo']['tmp_name'])) {
-			$type = explode("/", $_FILES['img_fundo']['type']);
-			$type = end($type);
+			if (isset($_FILES['img_fundo']) && !empty($_FILES['img_fundo']['tmp_name'])) {
+				$type = explode("/", $_FILES['img_fundo']['type']);
+				$type = end($type);
 
-			$filename = "banner".$id_usuario.".".$type;
-			$usuarios->atualizarImgFundo($id_usuario, $filename);
-			move_uploaded_file($_FILES['img_fundo']['tmp_name'], "assets/images/".$filename);
-			$alterado = true;
-		}
-		if (isset($_FILES['img_perfil']) && !empty($_FILES['img_perfil']['tmp_name'])) {
-			$type = explode("/", $_FILES['img_perfil']['type']);
-			$type = end($type);
+				$filename = "banner".$id_usuario.".".$type;
+				$usuarios->atualizarImgFundo($id_usuario, $filename);
+				move_uploaded_file($_FILES['img_fundo']['tmp_name'], "assets/images/".$filename);
+				$alterado = true;
+			}
+			if (isset($_FILES['img_perfil']) && !empty($_FILES['img_perfil']['tmp_name'])) {
+				$type = explode("/", $_FILES['img_perfil']['type']);
+				$type = end($type);
 
-			$filename = "perfil".$id_usuario.".".$type;
-			$usuarios->atualizarImgPerfil($id_usuario, $filename);
-			move_uploaded_file($_FILES['img_perfil']['tmp_name'], "assets/images/".$filename);
-			$alterado = true;
+				$filename = "perfil".$id_usuario.".".$type;
+				$usuarios->atualizarImgPerfil($id_usuario, $filename);
+				move_uploaded_file($_FILES['img_perfil']['tmp_name'], "assets/images/".$filename);
+				$alterado = true;
+			}
+			if ($alterado) {
+				header("Location: /users/ver/".$id_usuario);
+				exit();
+			}
+			$this->loadTemplate('user_images',$dados);
 		}
-		if ($alterado) {
-			header("Location: /users/ver/".$id_usuario);
-			exit();
+		else{
+			header("Location: /");
 		}
-		$this->loadTemplate('user_images',$dados);
+		
 	}
 
 

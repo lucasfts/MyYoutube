@@ -8,11 +8,10 @@
 	
 </head>
 <body>
-
+	
 	<div class="formulario" >
 		<form method="post">
-			<img src="/teste.jpg" width="100%" height="150px">
-			<br><br>
+			<img src="/assets/images/logo.png" style="margin-bottom: 8px;"  width="100%" height="150px">
 			<p style="color: red; text-align: center;"><?php echo $erro; ?></p>
 			<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome do Usuario" required>
 			<br>
@@ -24,7 +23,7 @@
 			<br>
 			<input type="submit" value="Cadastrar" class="btn btn-danger" >
 			
-			
+
 		</form>		
 	</div>
 

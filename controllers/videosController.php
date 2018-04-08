@@ -48,11 +48,11 @@ class videosController extends Controller{
 
 		try {
 			if ($videos->getUserId($id) != $_SESSION['user']) {
-				header("Location : /") ;  exit();
+				header("Location: /");  exit();
 			}
 			$dados['video'] = $videos->getVideo($id);
 		} catch (Exception $e) {
-			header("Location : /");
+			header("Location: /");
 		}
 
 		if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
@@ -83,12 +83,12 @@ class videosController extends Controller{
 
 		try {
 			if ($videos->getUserId($id) != $_SESSION['user']) {
-				header("Location : /") ;  exit();
+				header("Location: /") ;  exit();
 			}
 			$videos->excluir($id);
 			header("Location: /users/ver/".$_SESSION['user']);
 		} catch (Exception $e) {
-			header("Location : /");
+			header("Location: /");
 		}
 		
 	}

@@ -13,7 +13,7 @@
 				<li><a href="/"><p class="logo">MyYoutube</p></a></li>
 				<li>
 					<form action="/results">
-						<input style="border: 1px solid #555" class="form_item caixa_pesquisa" type="search" name="q" placeholder="Pesquisar" required>
+						<input style="border: 1px solid #555" class="form_item caixa_pesquisa" type="search" name="q" placeholder="Pesquisar" value="<?php echo isset($_GET['q']) ? $_GET['q'] : ""; ?>" required>
 						<input class="btn_submit" type="submit" value=" ">
 					</form>
 					
@@ -33,16 +33,18 @@
 			<div>
 				<div class="container_left_item">
 					<h5>Categorias</h5>
-				<ul>
+				<ul style="margin-top: 5px;">
 					<?php foreach($categorias as $c): ?>
-					<a href="/results/categoria/<?php echo $c['Id'] ?>"><li>
+					<li>
+						<a href="/results/categoria/<?php echo $c['Id'] ?>">
 						<div class="categoria_item">
 
 						<img src="/assets/images/categoria.png">
 						<pre><?php echo $c['Nome']; ?></pre><br>
 						
 						</div>
-					</li></a>
+						</a>
+					</li>
 				<?php endforeach; ?>
 					
 				</ul>

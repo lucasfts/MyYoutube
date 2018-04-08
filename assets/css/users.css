@@ -1,7 +1,5 @@
 .banner{
-	
 	height: 200px;
-	background-color: black;
 	margin-left: -20px;
 	margin-right: -20px;
 	margin-top: -20px;
@@ -10,7 +8,6 @@
 }
 .user_header{
 	height: 100px;
-	background-color: blue;
 	line-height: 100px;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -24,7 +21,6 @@
 	float: left;
 }
 .user_info{
-	background-color: green;
 	height: 70px;
 	float: left;
 	line-height: 16px;
@@ -43,7 +39,6 @@
 	margin-right: 10px;
 }
 .container_videos{
-	background-color: green;
 	width: 100%;
 	padding:20px;
 

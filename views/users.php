@@ -2,7 +2,9 @@
 
 
 <div class="banner" style="background-image: url('/assets/images/<?php echo $usuario['img_fundo'] ?>'); ">
-	<a href="/users/images/<?php echo $usuario['Id']; ?>" id="linkImagem" ><span id="imgCamera"><img src="/assets/images/camera.png" height="100%" style="margin-right: 7px;">Alterar imagens</span></a>
+	<?php if(isset($_SESSION['user']) && $_SESSION['user'] == $usuario['Id']): ?>
+		<a href="/users/images/<?php echo $usuario['Id']; ?>" id="linkImagem" ><span id="imgCamera"><img src="/assets/images/camera.png" height="100%" style="margin-right: 7px;">Alterar imagens</span></a>
+	<?php endif; ?>
 </div>
 
 <div class="user_header">
