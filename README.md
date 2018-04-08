@@ -1,6 +1,6 @@
 # MyYoutube
 
-## O objetivo do projeto é desenvolver um repositório de vídeos, recriando o layout e as funcionalidades da plataforma youtube, porém em menor escala
+<h3> O objetivo do projeto é desenvolver um repositório de vídeos, recriando o layout e as funcionalidades da plataforma youtube, porém em menor escala</h3>
 
 ### Funcionalidades do Sistema:
    - [x] Cadastro e login de usuários
