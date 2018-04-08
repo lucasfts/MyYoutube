@@ -2,7 +2,7 @@
 
 ## O objetivo do projeto é desenvolver um repositório de vídeos, recriando o layout e as funcionalidades da plataforma youtube, porém em menor escala
 
-#### Funcionalidades do Sistema:
+### Funcionalidades do Sistema:
    - [x] Cadastro e login de usuários
    - [x] Pesquisa de vídeos por nome ou categoria
    - [x] Upload, edição e exclusão de vídeos
