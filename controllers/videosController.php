@@ -14,6 +14,7 @@ class videosController extends Controller{
 		$categorias = new Categorias();
 		if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
 			try {
+				print_r( $_FILES['video']); exit();
 				if ($_FILES['video']['type'] != "video/mp4") {
 					throw new Exception("Adicionar apenas videos em formato .mp4", 1);
 				}

@@ -1,7 +1,7 @@
 <form method="post" enctype="multipart/form-data" style="width: 97%; margin: auto;">
 	<h2>Videos - Adicionar</h2>
 	<p style="color: red"><?php echo $erro; ?></p>
-	<input type="file" name="video" class="form-control" accept=".mp4" required>
+	<input type="file" size="15MB" name="video" class="form-control" accept=".mp4" required>
 	<br>
 
 	<label for="titulo">Titulo</label>

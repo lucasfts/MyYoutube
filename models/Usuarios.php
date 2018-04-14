@@ -1,5 +1,5 @@
 <?php
-class Usuarios extends model
+class Usuarios extends Model
 {
 	public function add($nome, $email, $senha){
 		if ($this->verificaEmail($email)) {

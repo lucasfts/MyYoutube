@@ -1,7 +1,13 @@
 <?php
 class Core{
 
+	public function __construct(){
+		
+	}
+
 	public function run(){
+		require "core/Controller.php";
+
 		//print_r($_SERVER['PHP_SELF']); exit();
 		$url = explode("index.php",$_SERVER['PHP_SELF']);
 		$url = end($url);
@@ -34,10 +40,13 @@ class Core{
 			$currentAction = "index";			
 		}
 
-		require_once "core/controller.php";
+		if ($currentController != "favicon.icoController") {
+			$c = new $currentController;
+			call_user_func_array(array($c,$currentAction), $params);
+		}
+		
 
-		$c = new $currentController();
-		call_user_func_array(array($c,$currentAction), $params);
+		
 
 	}
 }

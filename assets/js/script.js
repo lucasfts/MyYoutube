@@ -14,13 +14,15 @@ function redefinir(){
 	}
 }
 
+/*
 function MostrarScroll(obj){
 	$(obj).css("overflow-x","auto");
 }
 
 function EsconderScroll(obj){
-	$(obj).css("overflow-x","hidden");
+	$(obj).css("overflow-x","auto");
 }
+*/
 
 function Inscrever(obj){
 	var canalid = $(obj).data("canalid");
@@ -91,18 +93,19 @@ function Comentar(obj){
 	$.ajax({
 		url: "/ajax/Comentar",
 		type: "post",
+		dataType: "json",
 		data: {userid: userid, videoid: videoid, comentario: comentario},
-		success:function(id_comentario){
+		success:function(json){
 			$("#textarea").val("");
 			$("#textarea").attr("rows","1");
-			var html = '<div class="comentario_item" id="comentario'+id_comentario+'">'+
+			var html = '<div class="comentario_item" id="comentario'+json.id+'">'+
 				'<a href="/users/ver/'+userid+'">'+
 				'<img src="/assets/images/'+imgperfil+'">'+
 				'<pre class="comentario_autor">'+canalnome+' - '+data+'</pre><br>'+
 				'</a>'+
 				'<pre class="comentario_texto">'+comentario+'</pre>'+
 				'<div  class="comentarioDelete">'+
-						'<a href="#" onclick="ExcluirComent(\''+id_comentario+'\')">Excluir</a>'+
+						'<a href="#" onclick="ExcluirComent(\''+json.id+'\')">Excluir</a>'+
 					'</div>'+
 				'</div>';
 			$("#container_comentarios").prepend(html);
@@ -114,12 +117,14 @@ function Comentar(obj){
 }
 
 function ExcluirComent(id){
+	var qtComentarios = parseInt($("#qtComentarios").text());
 	$.ajax({
 		type: "post",
 		url: "/ajax/ExcluirComent",
 		data: {id_comentario: id},
 		success: function(){
 			$("#comentario"+id).remove();
+			$("#qtComentarios").text(qtComentarios-1);
 		}
 	});
 }

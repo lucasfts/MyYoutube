@@ -67,7 +67,7 @@
 				<div class="caixa_comentario_textarea" >
 					<textarea rows="1" id="textarea" placeholder="Adicione um comentario" onkeyup="resizeLinhas()"></textarea>
 					<?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
-						<button class="btn btn-default" onclick="Comentar(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-videoid="<?php echo $video['Id'] ?>" data-canalnome="<?php echo $video['canal']; ?>"  data-imgperfil="<?php echo $usuario['img_perfil'] ?>">Comentar</button>	
+						<button class="btn btn-default" onclick="Comentar(this)" data-userid="<?php echo $_SESSION['user'] ?>" data-videoid="<?php echo $video['Id'] ?>" data-canalnome="<?php echo $usuario['Nome']; ?>"  data-imgperfil="<?php echo $usuario['img_perfil'] ?>">Comentar</button>	
 					<?php else: ?>
 						<button class="btn btn-default" onclick="window.location.href='/login'" >Comentar</button>	
 					<?php endif; ?>

@@ -92,7 +92,7 @@ class ajaxController extends Controller{
 			$videoId = addslashes($_POST['videoid']);
 			$comentarios = new Comentarios();
 			$id = $comentarios->addComentario($userId, $videoId, $comentario);
-			echo $id;
+			echo json_encode(array("id" => $id));
 		}
 	}
 
