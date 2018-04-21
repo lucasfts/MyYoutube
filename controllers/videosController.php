@@ -14,7 +14,6 @@ class videosController extends Controller{
 		$categorias = new Categorias();
 		if (isset($_POST['titulo']) && !empty($_POST['titulo'])) {
 			try {
-				print_r( $_FILES['video']); exit();
 				if ($_FILES['video']['type'] != "video/mp4") {
 					throw new Exception("Adicionar apenas videos em formato .mp4", 1);
 				}
@@ -30,6 +29,15 @@ class videosController extends Controller{
 				header("Location: /users/ver/".$id_usuario);
 
 				move_uploaded_file($_FILES['video']['tmp_name'], "./assets/videos/".$filename);
+
+
+				$decodedData=base64_decode($_POST['thumbnail']);
+				$filename = str_replace(".mp4", ".jpg", $filename);
+		        //create the file
+		        $fp = fopen( "./assets/images/".$filename, 'wb' );
+	            fwrite( $fp, $decodedData);
+	            fclose( $fp );
+
 			} catch (Exception $e) {
 				
 				$dados['erro'] = $e->getMessage();
