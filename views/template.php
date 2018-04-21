@@ -32,7 +32,7 @@
 		<div class="container_left" id="container_left">
 			<div>
 				<div style="margin-left: 25px;margin-top: 15px;border: 1px solid #999;width: 230px;">
-					<a href="https://github.com/lucasfts" >
+					<a href="https://github.com/lucasfts" style="color: #007bff;" >
 					<img src="/assets/images/github.png" height="35px" >https://github.com/lucasfts
 					</a>
 				</div>

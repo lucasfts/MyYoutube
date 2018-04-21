@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/watch.css">
 
 <div class="video_principal">
-	<video poster src="/assets/videos/<?php echo $video['Url']; ?>" controls="videoplayback" ></video>
+	<video autoplay="true" src="/assets/videos/<?php echo $video['Url']; ?>" controls="videoplayback" ></video>
 </div>
 
 <div class="video_secundario">
@@ -103,7 +103,7 @@
 		<?php foreach($sugestoes as $s): ?>
 			
 			<a href="/watch?v=<?php echo md5($s['Id']); ?>" style="text-decoration: none;color: #000;"><div class="video_recomendado">
-				<video poster src="/assets/videos/<?php echo $s['Url'] ?>"></video>
+				<img poster src="/assets/images/<?php echo str_replace(".mp4", ".jpg", $s['Url']); ?>"></img>
 				<div class="video_recomendado_descricao">
 					<b><?php echo $s['Titulo'] ?></b><br>
 					<?php echo $s['canal']; ?><br>

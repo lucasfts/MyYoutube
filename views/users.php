@@ -38,7 +38,7 @@
 	<?php foreach($videos as $v): ?>
 		<div class="video_item">
 			<a style="width: 100%" href="/watch?v=<?php echo md5($v['Id']) ?>">
-				<video poster style="background-color: black;" src="/assets/videos/<?php echo $v['Url']; ?>" width="100%" height="150px" ></video>
+				<img poster style="background-color: black;" src="/assets/images/<?php echo str_replace(".mp4", ".jpg", $v['Url']); ?>" width="100%" height="150px" ></img>
 			</a>
 			<h5><?php echo $v['Titulo']; ?></h5>
 			<p><?php echo $v['Views']; ?> Visualizações</p>
